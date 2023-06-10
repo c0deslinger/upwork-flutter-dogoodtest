@@ -32,7 +32,7 @@ class GroceriesControllerImpl extends GetxController
     try {
       await groceryDatasource.addGrocery(name, category, quantity);
       Get.snackbar(
-          "add_grocery_snackbar_title".tr, "add_grocery_snackbar_subtitley".tr);
+          "add_grocery_snackbar_title".tr, "add_grocery_snackbar_subtitle".tr);
       fetchGroceries();
     } catch (e) {
       Get.snackbar("add_grocery_snackbar_failed_title".tr,

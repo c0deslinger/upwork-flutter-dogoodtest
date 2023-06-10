@@ -49,13 +49,14 @@ class _EditGroceryPageState extends State<EditGroceryPage> {
 
   bool isInputValid(String name, String qty, Category? selectedCategory) {
     if (name.isEmpty) {
-      Get.snackbar("Name empty", "Please fill name field");
+      Get.snackbar("err_empty_name_title".tr, "err_empty_name_subtitle".tr);
       return false;
     } else if (qty.isEmpty) {
-      Get.snackbar("Quantity empty", "Please fill quantity field");
+      Get.snackbar("err_empty_qty_title".tr, "err_empty_qty_subtitle".tr);
       return false;
     } else if (selectedCategory == null) {
-      Get.snackbar("Category not selected", "Please select category");
+      Get.snackbar(
+          "err_empty_category_title".tr, "err_empty_category_subtitle".tr);
       return false;
     }
     return true;
@@ -165,7 +166,7 @@ class _EditGroceryPageState extends State<EditGroceryPage> {
                 RoundedButton(
                   title: editingGrocery == null
                       ? "add_item_label".tr
-                      : "edit_item_label".tr,
+                      : "save_item_label".tr,
                   onClick: () {
                     if (isInputValid(nameController.text, qtyController.text,
                         selectedCategory)) {

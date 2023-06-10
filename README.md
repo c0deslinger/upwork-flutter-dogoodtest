@@ -1,16 +1,12 @@
-# grocery_test
+# Grocery App
 
-A new Flutter project.
+A simple grocery app with Getx and Firestore
 
-## Getting Started
+## Best Practices in this App
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Implement Getx state management: By implementing Getx state management, it becomes easy to change and manage the app's state using the GroceryController class.
+- Multilanguage support: I have added multilanguage support to this app with English and Bahasa Indonesia languages.
+  ![Example Image](https://prnt.sc/yOtlg0eGoWbC)
+  ![Example Image](https://prnt.sc/CefpDv5pcM2e)
+- MVC class implementation: By implementing the MVC (Model-View-Controller) pattern, we can separate the view for the user interface, the controller for handling the business logic, and the datasource for retrieving data from the repository. This allows for easier future changes to the database by simply modifying the datasource class.
+- Light mode and dark mode support: The app supports both light mode and dark mode by separating the app themes. This enables easy switching between modes in the global controller for future implementation of light mode or dark mode.

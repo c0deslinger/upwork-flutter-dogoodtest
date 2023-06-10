@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,8 +22,9 @@ class GlobalController extends GetxController {
   Future<void> _getLastSetting() async {
     theme =
         (box.read("isDarkMode") ?? false) ? ThemeMode.dark : ThemeMode.light;
-    String langCode = box.read("locale") ?? "en";
-    locale = Locale(langCode);
+    String systemLang = (window.locale.languageCode == "en" ? "en" : "id");
+    // String langCode = box.read("locale") ?? systemLang;
+    locale = Locale(systemLang);
     update();
   }
 

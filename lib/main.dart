@@ -1,15 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_test/app/global/controller/global_controller.dart';
-import 'package:grocery_test/app/modules/controller/grocery_controller.dart';
-import 'package:grocery_test/app/modules/data/grocery_datasource.dart';
 import 'package:grocery_test/style/colors.dart';
 import 'package:grocery_test/app/modules/view/list_groceries_page.dart';
 
 import 'app_route.dart';
 import 'locale/app_translation.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

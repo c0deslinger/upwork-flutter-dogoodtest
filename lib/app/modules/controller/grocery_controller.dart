@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_test/app/modules/data/grocery_datasource.dart';
 
@@ -23,13 +22,21 @@ class GroceriesControllerImpl extends GetxController
   List<Grocery>? groceries;
 
   @override
+  void onInit() {
+    fetchGroceries();
+    super.onInit();
+  }
+
+  @override
   void addGrocery(String name, Category category, int quantity) async {
     try {
       await groceryDatasource.addGrocery(name, category, quantity);
-      Get.snackbar("Add Grocery", "Success add grocery");
+      Get.snackbar(
+          "add_grocery_snackbar_title".tr, "add_grocery_snackbar_subtitley".tr);
       fetchGroceries();
     } catch (e) {
-      Get.snackbar("Add Failed", "Failed to add grocery");
+      Get.snackbar("add_grocery_snackbar_failed_title".tr,
+          "add_grocery_snackbar_failed_subtitle".tr);
     }
   }
 
@@ -38,10 +45,12 @@ class GroceriesControllerImpl extends GetxController
       String id, String name, Category category, int quantity) async {
     try {
       await groceryDatasource.editGrocery(id, name, category, quantity);
-      Get.snackbar("Edit Grocery", "Item edited");
+      Get.snackbar("edit_grocery_snackbar_title".tr,
+          "edit_grocery_snackbar_subtitle".tr);
       fetchGroceries();
     } catch (e) {
-      Get.snackbar("Edit Failed", "Failed to edit grocery");
+      Get.snackbar("edit_grocery_snackbar_failed_title".tr,
+          "edit_grocery_snackbar_failed_subtitle".tr);
     }
   }
 
@@ -49,12 +58,10 @@ class GroceriesControllerImpl extends GetxController
   Future<void> deleteGrocery(String id) async {
     try {
       groceryDatasource.deleteGrocery(id);
-      // Future.delayed(Duration(seconds: 3));
-      // Get.snackbar("Delete Grocery", "Item deleted");
-      // Future.delayed(Duration(seconds: 3));
       await fetchGroceries();
     } catch (e) {
-      Get.snackbar("Delete Failed", "Failed to delete grocery");
+      Get.snackbar("delete_grocery_snackbar_failed_title".tr,
+          "delete_grocery_snackbar_failed_subtitle".tr);
     }
   }
 
@@ -63,11 +70,11 @@ class GroceriesControllerImpl extends GetxController
     listGroceriesState = RequestStatusState.loading;
     try {
       groceries = await groceryDatasource.fetchGroceries();
-      debugPrint("total groceries " + groceries!.length.toString());
       listGroceriesState = RequestStatusState.loaded;
     } catch (e) {
       listGroceriesState = RequestStatusState.failed;
-      print(e);
+      Get.snackbar("fetch_grocery_snackbar_failed_title".tr,
+          "fetch_grocery_snackbar_failed_subtitle".tr);
     }
     update();
   }

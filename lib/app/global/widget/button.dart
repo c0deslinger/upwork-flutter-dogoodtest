@@ -15,9 +15,12 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {},
-      textColor: AppColors.buttonTextColor,
-      color: isNegativeButton ? Colors.transparent : AppColors.buttonBgColor,
+      onPressed: () {
+        onClick();
+      },
+      textColor: AppColors.buttonTextColorDark,
+      color:
+          isNegativeButton ? Colors.transparent : AppColors.buttonBgColorDark,
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
